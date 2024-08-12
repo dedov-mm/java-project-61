@@ -1,5 +1,10 @@
-build-dist:
+build:
 	gradle installDist
 
-run-dist:
+run:
 	./build/install/app/bin/app
+
+lint:
+	gradle checkstyleMain
+
+.PHONY: build
