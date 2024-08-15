@@ -1,15 +1,13 @@
 package hexlet.code;
 
-import java.util.Scanner;
+import hexlet.code.games.Calc;
+import hexlet.code.games.Even;
 
 public class App {
-    public static Scanner scanner = new Scanner(System.in);
-    public static String username;
-
     public static void main(String[] args) {
         System.out.println("Please enter the game number and press Enter.");
-        System.out.println("1 - Greet\n2 - Even\n0 - Exit");
-        String userChoice = scanner.next();
+        System.out.println("1 - Greet\n2 - Even\n3 - Calc\n0 - Exit");
+        String userChoice = Engine.scanner.next();
         System.out.println("Your choice: " + userChoice);
         switch (userChoice) {
             case "1" -> {
@@ -18,6 +16,9 @@ public class App {
             case "2" -> {
                 Even.play();
             }
+            case "3" -> {
+                Calc.play();
+            }
             case "0" -> {
                 return;
             }
@@ -25,6 +26,6 @@ public class App {
                 return;
             }
         }
-        scanner.close();
+        Engine.scanner.close();
     }
 }
