@@ -23,7 +23,39 @@ public class Engine {
         System.out.println(gameCondition);
     }
 
+    public static int getGreatestCommonDivisor(int randomNumber1, int randomNumber2) {
+        while (randomNumber1 > 0 && randomNumber2 > 0) {
+            if (randomNumber1 >= randomNumber2) {
+                randomNumber1 = randomNumber1 % randomNumber2;
+            } else {
+                randomNumber2 = randomNumber2 % randomNumber1;
+            }
+        }
+        return Math.max(randomNumber1, randomNumber2);
+    }
+
     public static void printCongratulations() {
         System.out.println("Congratulations, " + Engine.userName + "!");
+    }
+    
+    public static String getUserAnswer() {
+        return Engine.scanner.next();
+    }
+
+    public static void printUserAnswer(String userAnswer) {
+        System.out.println("Your answer: " + userAnswer);
+    }
+
+    public static void printMessageIfUserAnswerCorrect() {
+        System.out.println("Correct!");
+    }
+
+    public static void printMessageIfUserAnswerWrong(String userAnswer, int result) {
+        System.out.println(userAnswer
+                + " is wrong answer ;(. Correct answer was "
+                + result
+                + "\nLet's try again, "
+                + userName
+                + "!");
     }
 }

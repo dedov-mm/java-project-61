@@ -23,18 +23,13 @@ public class Calc {
             int result = randomOperation.operation().applyAsInt(randomNumber1, randomNumber2);
 
             System.out.println("Question: " + randomNumber1 + " " + randomOperation.name + " " + randomNumber2);
-            String userAnswer = Engine.scanner.next();
-            System.out.println("Your answer: " + userAnswer);
+            String userAnswer = Engine.getUserAnswer();
+            Engine.printUserAnswer(userAnswer);
 
             if (Integer.parseInt(userAnswer) == result) {
-                System.out.println("Correct!");
+                Engine.printMessageIfUserAnswerCorrect();
             } else {
-                System.out.println(userAnswer
-                        + " is wrong answer ;(. Correct answer was "
-                        + result
-                        + "\nLet's try again, "
-                        + Engine.userName
-                        + "!");
+                Engine.printMessageIfUserAnswerWrong(userAnswer, result);
                 return;
             }
         }

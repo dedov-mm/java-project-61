@@ -10,11 +10,11 @@ public class Even {
             int randomNumber = Engine.getRandomNumber();
 
             System.out.println("Question: " + randomNumber);
-            String userAnswer = Engine.scanner.next();
-            System.out.println("Your answer: " + userAnswer);
+            String userAnswer = Engine.getUserAnswer();
+            Engine.printUserAnswer(userAnswer);
 
             if (randomNumber % 2 == 0 && userAnswer.equals("yes") || randomNumber % 2 != 0 && userAnswer.equals("no")) {
-                System.out.println("Correct!");
+                Engine.printMessageIfUserAnswerCorrect();
             } else if (randomNumber % 2 != 0) {
                 System.out.println(userAnswer
                         + " is wrong answer ;(. Correct answer was 'no'.\n"
