@@ -16,18 +16,10 @@ public class Even {
             if (randomNumber % 2 == 0 && userAnswer.equals("yes") || randomNumber % 2 != 0 && userAnswer.equals("no")) {
                 Engine.printMessageIfUserAnswerCorrect();
             } else if (randomNumber % 2 != 0) {
-                System.out.println(userAnswer
-                        + " is wrong answer ;(. Correct answer was 'no'.\n"
-                        + "Let's try again, "
-                        + Engine.userName
-                        + "!");
+                Engine.printMessageIfUserAnswerWrong(userAnswer, "no");
                 return;
             } else if (randomNumber % 2 == 0) {
-                System.out.println(userAnswer
-                        + " is wrong answer ;(. Correct answer was 'yes'.\n"
-                        + "Let's try again, "
-                        + Engine.userName
-                        + "!");
+                Engine.printMessageIfUserAnswerWrong(userAnswer, "yes");
                 return;
             }
         }

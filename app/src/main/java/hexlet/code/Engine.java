@@ -52,9 +52,18 @@ public class Engine {
 
     public static void printMessageIfUserAnswerWrong(String userAnswer, int result) {
         System.out.println(userAnswer
-                + " is wrong answer ;(. Correct answer was "
+                + " is wrong answer ;(. Correct answer was '"
                 + result
-                + "\nLet's try again, "
+                + "'.\nLet's try again, "
+                + userName
+                + "!");
+    }
+
+    public static void printMessageIfUserAnswerWrong(String userAnswer, String result) {
+        System.out.println(userAnswer
+                + " is wrong answer ;(. Correct answer was '"
+                + result
+                + "'.\nLet's try again, "
                 + userName
                 + "!");
     }
