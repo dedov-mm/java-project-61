@@ -1,7 +1,6 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
-import static hexlet.code.Engine.random;
 
 public class GCD {
     public static void play() {
