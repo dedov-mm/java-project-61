@@ -51,6 +51,18 @@ public class Engine {
         }
     }
 
+    public static boolean isPrime(int number) {
+        if (number == 2) {
+            return true;
+        }
+        for (int i = 2; i <= number - 1; i++) {
+            if (number % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public static void printCongratulations() {
         System.out.println("Congratulations, " + Engine.userName + "!");
     }
