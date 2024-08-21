@@ -32,7 +32,6 @@ public class Progression {
             System.out.println("Question: " + questionWithARowOfNumbers);
             String userAnswer = Engine.getUserAnswer();
             Engine.printUserAnswer(userAnswer);
-
             if (StringUtils.isNumeric(userAnswer) && Integer.parseInt(userAnswer) == result) {
                 Engine.printMessageIfUserAnswerCorrect();
             } else {
