@@ -15,3 +15,6 @@
 
 ### asccinema Progression movie
 [![asciicast](https://asciinema.org/a/5dVdt4n6BOjq4zLHHPpjlnlPD.svg)](https://asciinema.org/a/5dVdt4n6BOjq4zLHHPpjlnlPD)
+
+### asccinema Prime movie
+[![asciicast](https://asciinema.org/a/M91IR0BjPUWc31EUPPnFGVGpb.svg)](https://asciinema.org/a/M91IR0BjPUWc31EUPPnFGVGpb)
