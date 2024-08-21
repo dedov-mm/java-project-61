@@ -16,10 +16,10 @@ public class Prime {
 
             if (result && userAnswer.equals("yes") || !result && userAnswer.equals("no")) {
                 Engine.printMessageIfUserAnswerCorrect();
-            } else if (result && userAnswer.equals("no")) {
+            } else if (result) {
                 Engine.printMessageIfUserAnswerWrong(userAnswer, "yes");
                 return;
-            } else if (!result && userAnswer.equals("yes")) {
+            } else if (!result) {
                 Engine.printMessageIfUserAnswerWrong(userAnswer, "no");
                 return;
             }
