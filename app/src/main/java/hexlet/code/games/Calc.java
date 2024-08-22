@@ -10,8 +10,7 @@ public class Calc {
     private static List<Operation> operations =
             List.of(new Operation("+", (i1, i2) -> i1 + i2),
                     new Operation("-", (i1, i2) -> i1 - i2),
-                    new Operation("*", (i1, i2) -> i1 * i2),
-                    new Operation("/", (i1, i2) -> i1 / i2));
+                    new Operation("*", (i1, i2) -> i1 * i2));
 
     public static void play() {
         Engine.greet("What is the result of the expression?");
