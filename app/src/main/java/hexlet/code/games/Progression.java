@@ -16,28 +16,58 @@ public class Progression {
 
             Engine.fillRandomArray(randomArray, randomStartNumber, randomStepNumber);
             StringBuilder questionWithARowOfNumbers = new StringBuilder();
-            for (int k = 0; k < randomArray.length; k++) {
-                if (randomArray[k] == randomArray[randomMissingNumberPosition]) {
-                    result = randomArray[k];
-                    questionWithARowOfNumbers.append(".. ");
-                    continue;
-                }
-                questionWithARowOfNumbers.append(randomArray[k]);
-                if (i < randomArray.length - 1) {
-                    questionWithARowOfNumbers.append(" ");
-                }
-            }
+            Question question = getQuestion(randomArray,
+                    randomMissingNumberPosition,
+                    questionWithARowOfNumbers,
+                    result);
 
-            System.out.println("Question: " + questionWithARowOfNumbers);
+            System.out.println("Question: " + question.getStringBuilder());
             String userAnswer = Engine.getUserAnswer();
             Engine.printUserAnswer(userAnswer);
-            if (StringUtils.isNumeric(userAnswer) && Integer.parseInt(userAnswer) == result) {
+            if (StringUtils.isNumeric(userAnswer) && Integer.parseInt(userAnswer) == question.getResult()) {
                 Engine.printMessageIfUserAnswerCorrect();
             } else {
-                Engine.printMessageIfUserAnswerWrong(userAnswer, result);
+                Engine.printMessageIfUserAnswerWrong(userAnswer, question.getResult());
                 return;
             }
         }
         Engine.printCongratulations();
+    }
+
+    public static Question getQuestion(int[] randomArray,
+                                       int randomMissingNumberPosition,
+                                       StringBuilder questionWithARowOfNumbers,
+                                       int result) {
+
+        for (int k = 0; k < randomArray.length; k++) {
+            if (randomArray[k] == randomArray[randomMissingNumberPosition]) {
+                result = randomArray[k];
+                questionWithARowOfNumbers.append(".. ");
+                continue;
+            }
+            questionWithARowOfNumbers.append(randomArray[k]);
+            if (k < randomArray.length - 1) {
+                questionWithARowOfNumbers.append(" ");
+            }
+        }
+        return new Question(questionWithARowOfNumbers, result);
+    }
+}
+
+class Question {
+    private StringBuilder stringBuilder;
+    private int result;
+
+    Question(StringBuilder stringBuilder, int result) {
+        this.stringBuilder = stringBuilder;
+        this.result = result;
+    }
+
+    public int getResult() {
+        return result;
+    }
+
+    public StringBuilder getStringBuilder() {
+        return stringBuilder;
     }
 }
