@@ -4,15 +4,14 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Engine {
-//    private static final Scanner scanner = new Scanner(System.in);
-    private static final Random random = new Random();
-    private static final int minRandomNumber = 1;
-    private static final int maxRandomNumber = 100;
-    private static final int minRandomStepNumber = 2;
-    private static final int maxRandomStepNumber = 4;
-    private static final int rounds = 3;
+    private static final Random RANDOM = new Random();
+    private static final int MINRANDOMNUMBER = 1;
+    private static final int MAXRANDOMNUMBER = 100;
+    private static final int MINRANDOMSTEPNUMBER = 2;
+    private static final int MAXRANDOMSTEPNUMBER = 4;
+    private static final int ROUNDS = 3;
     private static String userName;
-    private static final int rowLength = 10;
+    private static final int ROWLENGTH = 10;
 
     public static Scanner getScanner() {
         return new Scanner(System.in);
@@ -23,23 +22,23 @@ public class Engine {
     }
 
     public static int getRandomNumber() {
-        return random.nextInt(maxRandomNumber - minRandomNumber + 1) + minRandomNumber;
+        return RANDOM.nextInt(MAXRANDOMNUMBER - MINRANDOMNUMBER + 1) + MINRANDOMNUMBER;
     }
 
     public static int getRandomStepNumber() {
-        return random.nextInt(maxRandomStepNumber - minRandomStepNumber + 1) + minRandomStepNumber;
+        return RANDOM.nextInt(MAXRANDOMSTEPNUMBER - MINRANDOMSTEPNUMBER + 1) + MINRANDOMSTEPNUMBER;
     }
 
     public static int getRandomMissingNumberPosition(int range) {
-        return random.nextInt(range);
+        return RANDOM.nextInt(range);
     }
 
     public static int getRounds() {
-        return rounds;
+        return ROUNDS;
     }
 
     public static int getRowLength() {
-        return rowLength;
+        return ROWLENGTH;
     }
 
     public static void greet(String gameCondition) {
