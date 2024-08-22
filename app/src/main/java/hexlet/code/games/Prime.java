@@ -6,7 +6,7 @@ public class Prime {
     public static void play() {
         Engine.greet("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
 
-        for (int i = 0; i < Engine.rounds; i++) {
+        for (int i = 0; i < Engine.getRounds(); i++) {
             int randomNumber = Engine.getRandomNumber();
             boolean result = Engine.isPrime(randomNumber);
 

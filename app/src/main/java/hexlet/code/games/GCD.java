@@ -6,7 +6,7 @@ public class GCD {
     public static void play() {
         Engine.greet("Find the greatest common divisor of given numbers.");
 
-        for (int i = 0; i < Engine.rounds; i++) {
+        for (int i = 0; i < Engine.getRounds(); i++) {
             int randomNumber1 = Engine.getRandomNumber();
             int randomNumber2 = Engine.getRandomNumber();
             int result = Engine.getGreatestCommonDivisor(randomNumber1, randomNumber2);

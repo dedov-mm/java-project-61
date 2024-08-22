@@ -4,14 +4,23 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Engine {
-    public static Scanner scanner = new Scanner(System.in);
-    public static Random random = new Random();
-    public static int minRandomNumber = 1;
-    public static int maxRandomNumber = 100;
-    public static int minRandomStepNumber = 2;
-    public static int maxRandomStepNumber = 4;
-    public static int rounds = 3;
-    public static String userName;
+//    private static final Scanner scanner = new Scanner(System.in);
+    private static final Random random = new Random();
+    private static final int minRandomNumber = 1;
+    private static final int maxRandomNumber = 100;
+    private static final int minRandomStepNumber = 2;
+    private static final int maxRandomStepNumber = 4;
+    private static final int rounds = 3;
+    private static String userName;
+    private static final int rowLength = 10;
+
+    public static Scanner getScanner() {
+        return new Scanner(System.in);
+    }
+
+    public static Random getRandom() {
+        return new Random();
+    }
 
     public static int getRandomNumber() {
         return random.nextInt(maxRandomNumber - minRandomNumber + 1) + minRandomNumber;
@@ -25,10 +34,18 @@ public class Engine {
         return random.nextInt(range);
     }
 
+    public static int getRounds() {
+        return rounds;
+    }
+
+    public static int getRowLength() {
+        return rowLength;
+    }
+
     public static void greet(String gameCondition) {
         System.out.println("Welcome to the Brain Games!");
         System.out.print("May I have your name? ");
-        userName = scanner.next();
+        userName = getScanner().next();
         System.out.println("Hello, " + userName + "!");
         System.out.println(gameCondition);
     }
@@ -68,7 +85,7 @@ public class Engine {
     }
 
     public static String getUserAnswer() {
-        return Engine.scanner.next();
+        return Engine.getScanner().next();
     }
 
     public static void printUserAnswer(String userAnswer) {

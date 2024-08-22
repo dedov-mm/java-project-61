@@ -7,12 +7,11 @@ public class Progression {
     public static void play() {
         Engine.greet("What number is missing in the progression?");
 
-        for (int i = 0; i < Engine.rounds; i++) {
+        for (int i = 0; i < Engine.getRounds(); i++) {
             int randomStartNumber = Engine.getRandomNumber();
             int randomStepNumber = Engine.getRandomStepNumber();
-            int rowLength = 10;
-            int randomMissingNumberPosition = Engine.getRandomMissingNumberPosition(rowLength);
-            int[] randomArray = new int[rowLength];
+            int randomMissingNumberPosition = Engine.getRandomMissingNumberPosition(Engine.getRowLength());
+            int[] randomArray = new int[Engine.getRowLength()];
             int result = 0;
 
             Engine.fillRandomArray(randomArray, randomStartNumber, randomStepNumber);

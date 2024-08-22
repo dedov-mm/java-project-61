@@ -16,7 +16,7 @@ public class App {
                 + "\n5 - Progression"
                 + "\n6 - Prime"
                 + "\n0 - Exit");
-        String userChoice = Engine.scanner.next();
+        String userChoice = Engine.getScanner().next();
         System.out.println("Your choice: " + userChoice);
         switch (userChoice) {
             case "1" -> {
@@ -44,6 +44,6 @@ public class App {
                 return;
             }
         }
-        Engine.scanner.close();
+        Engine.getScanner().close();
     }
 }

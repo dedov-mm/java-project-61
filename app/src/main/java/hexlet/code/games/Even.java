@@ -6,7 +6,7 @@ public class Even {
     public static void play() {
         Engine.greet("Answer 'yes' if the number is even, otherwise answer 'no'.");
 
-        for (int i = 0; i < Engine.rounds; i++) {
+        for (int i = 0; i < Engine.getRounds(); i++) {
             int randomNumber = Engine.getRandomNumber();
 
             System.out.println("Question: " + randomNumber);
