@@ -55,16 +55,16 @@ public class Progression {
 }
 
 class Question {
-    private StringBuilder stringBuilder;
-    private int result;
+    private final StringBuilder stringBuilder;
+    private final int resultNumber;
 
-    Question(StringBuilder stringBuilder, int result) {
-        this.stringBuilder = stringBuilder;
-        this.result = result;
+    Question(StringBuilder sb, int result) {
+        this.stringBuilder = sb;
+        this.resultNumber = result;
     }
 
     public int getResult() {
-        return result;
+        return resultNumber;
     }
 
     public StringBuilder getStringBuilder() {
