@@ -1,73 +1,56 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
-import org.apache.commons.lang3.StringUtils;
+import hexlet.code.Utils;
 
 public class Progression {
     public static void play() {
         Engine.greet("What number is missing in the progression?");
 
         for (int i = 0; i < Engine.getRounds(); i++) {
-            int randomStartNumber = Engine.getRandomNumber();
-            int randomStepNumber = Engine.getRandomStepNumber();
-            int randomMissingNumberPosition = Engine.getRandomMissingNumberPosition(Engine.getRowLength());
-            int[] randomArray = new int[Engine.getRowLength()];
-            int result = 0;
+            var generatedRoundData = generateRoundData();
+            var result = Engine.check(generatedRoundData);
 
-            Engine.fillRandomArray(randomArray, randomStartNumber, randomStepNumber);
-            StringBuilder questionWithARowOfNumbers = new StringBuilder();
-            Question question = getQuestion(randomArray,
-                    randomMissingNumberPosition,
-                    questionWithARowOfNumbers,
-                    result);
-
-            System.out.println("Question: " + question.getStringBuilder());
-            String userAnswer = Engine.getUserAnswer();
-            Engine.printUserAnswer(userAnswer);
-            if (StringUtils.isNumeric(userAnswer) && Integer.parseInt(userAnswer) == question.getResult()) {
-                Engine.printMessageIfUserAnswerCorrect();
-            } else {
-                Engine.printMessageIfUserAnswerWrong(userAnswer, question.getResult());
+            if (!result) {
                 return;
             }
         }
         Engine.printCongratulations();
     }
 
-    public static Question getQuestion(int[] randomArray,
-                                       int randomMissingNumberPosition,
-                                       StringBuilder questionWithARowOfNumbers,
-                                       int result) {
+    private static String[] generateRoundData() {
+        var startNumber = Utils.generateNumber(1, 100);
+        var stepNumber = Utils.generateNumber(2, 5);
+        var missingPosition = Utils.generateNumber(1, 10);
+        var numberSeries = new int[10];
 
-        for (int k = 0; k < randomArray.length; k++) {
-            if (randomArray[k] == randomArray[randomMissingNumberPosition]) {
-                result = randomArray[k];
-                questionWithARowOfNumbers.append(".. ");
+        var questionAndAnswer = calculate(numberSeries, startNumber, stepNumber, missingPosition);
+
+        return questionAndAnswer;
+    }
+
+    private static String[] calculate(int[] numberSeries, int startNumber, int stepNumber, int missingPosition) {
+        var question = new StringBuilder();
+        var answer = 0;
+
+        for (int j = 0; j < numberSeries.length; j++) {
+            numberSeries[j] = startNumber;
+            startNumber = startNumber + stepNumber;
+        }
+
+        for (int k = 0; k < numberSeries.length; k++) {
+            if (numberSeries[k] == numberSeries[missingPosition - 1]) {
+                answer = numberSeries[k];
+                question.append(".. ");
                 continue;
             }
-            questionWithARowOfNumbers.append(randomArray[k]);
-            if (k < randomArray.length - 1) {
-                questionWithARowOfNumbers.append(" ");
+            question.append(numberSeries[k]);
+            if (k < numberSeries.length - 1) {
+                question.append(" ");
             }
         }
-        return new Question(questionWithARowOfNumbers, result);
+        return new String[] {question.toString(), Integer.toString(answer)};
     }
+
 }
 
-class Question {
-    private final StringBuilder stringBuilder;
-    private final int resultNumber;
-
-    Question(StringBuilder sb, int result) {
-        this.stringBuilder = sb;
-        this.resultNumber = result;
-    }
-
-    public int getResult() {
-        return resultNumber;
-    }
-
-    public StringBuilder getStringBuilder() {
-        return stringBuilder;
-    }
-}
