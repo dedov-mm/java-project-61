@@ -19,10 +19,10 @@ public class Progression {
     }
 
     private static String[] generateRoundData() {
-        var startNumber = Utils.generateNumber(1, 100);
-        var stepNumber = Utils.generateNumber(2, 5);
-        var missingPosition = Utils.generateNumber(1, 10);
-        var numberSeries = new int[10];
+        final var startNumber = Utils.generateNumber(1, 100);
+        final var stepNumber = Utils.generateNumber(2, 5);
+        final var missingPosition = Utils.generateNumber(1, 10);
+        final var numberSeries = new int[10];
 
         var questionAndAnswer = calculate(numberSeries, startNumber, stepNumber, missingPosition);
 
