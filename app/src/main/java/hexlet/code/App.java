@@ -25,19 +25,19 @@ public class App {
                 Cli.greet();
             }
             case "2" -> {
-                Even.play();
+                Even.runGame();
             }
             case "3" -> {
-                Calc.play();
+                Calc.runGame();
             }
             case "4" -> {
-                GCD.play();
+                GCD.runGame();
             }
             case "5" -> {
-                Progression.play();
+                Progression.runGame();
             }
             case "6" -> {
-                Prime.play();
+                Prime.runGame();
             }
             case "0" -> {
                 return;

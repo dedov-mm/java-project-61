@@ -4,18 +4,15 @@ import hexlet.code.Engine;
 import hexlet.code.Utils;
 
 public class Even {
-    public static void play() {
-        Engine.greet("Answer 'yes' if the number is even, otherwise answer 'no'.");
+    public static void runGame() {
+        final var description = "Answer 'yes' if the number is even, otherwise answer 'no'.";
+        String[][] roundsData = new String[Engine.ROUNDS][2];
 
-        for (int i = 0; i < Engine.getRounds(); i++) {
-            var generatedRoundData = generateRoundData();
-            var result = Engine.check(generatedRoundData);
-
-            if (!result) {
-                return;
-            }
+        for (int i = 0; i < Engine.ROUNDS; i++) {
+            roundsData[i] = generateRoundData();
         }
-        Engine.printCongratulations();
+
+        Engine.run(description, roundsData);
     }
 
     private static String[] generateRoundData() {
@@ -25,16 +22,12 @@ public class Even {
         var number = Utils.generateNumber(min, max);
 
         var question = Integer.toString(number);
-        var answer = calculate(number);
+        var answer = isEven(number) ? "yes" : "no";
 
         return new String[] {question, answer};
     }
 
-    private static String calculate(int number) {
-        if (number % 2 == 0) {
-            return "yes";
-        } else {
-            return "no";
-        }
+    private static boolean isEven(int number) {
+        return number % 2 == 0;
     }
 }

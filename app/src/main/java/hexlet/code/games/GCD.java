@@ -4,19 +4,15 @@ import hexlet.code.Engine;
 import hexlet.code.Utils;
 
 public class GCD {
-    public static void play() {
-        Engine.greet("Find the greatest common divisor of given numbers.");
+    public static void runGame() {
+        final var description = "Find the greatest common divisor of given numbers.";
+        String[][] roundsData = new String[Engine.ROUNDS][2];
 
-        for (int i = 0; i < Engine.getRounds(); i++) {
-            var generatedRoundData = generateRoundData();
-            var result = Engine.check(generatedRoundData);
-
-            if (!result) {
-                return;
-            }
+        for (int i = 0; i < Engine.ROUNDS; i++) {
+            roundsData[i] = generateRoundData();
         }
 
-        Engine.printCongratulations();
+        Engine.run(description, roundsData);
     }
 
     private static String[] generateRoundData() {
@@ -27,12 +23,12 @@ public class GCD {
         var number2 = Utils.generateNumber(min, max);
 
         var question = number1 + " " + number2;
-        var answer = Integer.toString(calculate(number1, number2));
+        var answer = Integer.toString(gcd(number1, number2));
 
         return new String[] {question, answer};
     }
 
-    private static int calculate(int randomNumber1, int randomNumber2) {
+    private static int gcd(int randomNumber1, int randomNumber2) {
         while (randomNumber1 > 0 && randomNumber2 > 0) {
             if (randomNumber1 >= randomNumber2) {
                 randomNumber1 = randomNumber1 % randomNumber2;

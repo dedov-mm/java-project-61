@@ -4,19 +4,15 @@ import hexlet.code.Engine;
 import hexlet.code.Utils;
 
 public class Calc {
-    public static void play() {
-        Engine.greet("What is the result of the expression?");
+    public static void runGame() {
+        final var description = "What is the result of the expression?";
+        String[][] roundsData = new String[Engine.ROUNDS][2];
 
-        for (int i = 0; i < Engine.getRounds(); i++) {
-            var generatedRoundData = generateRoundData();
-            var result = Engine.check(generatedRoundData);
-
-            if (!result) {
-                return;
-            }
+        for (int i = 0; i < Engine.ROUNDS; i++) {
+            roundsData[i] = generateRoundData();
         }
 
-        Engine.printCongratulations();
+        Engine.run(description, roundsData);
     }
 
     private static String[] generateRoundData() {

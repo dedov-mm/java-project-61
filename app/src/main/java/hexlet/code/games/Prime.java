@@ -4,18 +4,15 @@ import hexlet.code.Engine;
 import hexlet.code.Utils;
 
 public class Prime {
-    public static void play() {
-        Engine.greet("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
+    public static void runGame() {
+        final var description = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
+        String[][] roundsData = new String[Engine.ROUNDS][2];
 
-        for (int i = 0; i < Engine.getRounds(); i++) {
-            var generatedRoundData = generateRoundData();
-            var result = Engine.check(generatedRoundData);
-
-            if (!result) {
-                return;
-            }
+        for (int i = 0; i < Engine.ROUNDS; i++) {
+            roundsData[i] = generateRoundData();
         }
-        Engine.printCongratulations();
+
+        Engine.run(description, roundsData);
     }
 
     private static String[] generateRoundData() {
@@ -25,21 +22,21 @@ public class Prime {
         var number = Utils.generateNumber(min, max);
 
         var question = Integer.toString(number);
-        var answer = calculate(number);
+        var answer = isPrime(number) ? "yes" : "no";
 
         return new String[] {question, answer};
     }
 
-    private static String calculate(int number) {
+    private static boolean isPrime(int number) {
         if (number == 2) {
-            return "yes";
+            return true;
         }
 
         for (int i = 2; i <= number - 1; i++) {
             if (number % i == 0) {
-                return "no";
+                return false;
             }
         }
-        return "yes";
+        return true;
     }
 }

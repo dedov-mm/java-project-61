@@ -4,60 +4,46 @@ import hexlet.code.Engine;
 import hexlet.code.Utils;
 
 public class Progression {
-    public static void play() {
-        Engine.greet("What number is missing in the progression?");
+    public static void runGame() {
+        final var description = "What number is missing in the progression?";
+        String[][] roundsData = new String[Engine.ROUNDS][2];
 
-        for (int i = 0; i < Engine.getRounds(); i++) {
-            var generatedRoundData = generateRoundData();
-            var result = Engine.check(generatedRoundData);
-
-            if (!result) {
-                return;
-            }
+        for (int i = 0; i < Engine.ROUNDS; i++) {
+            roundsData[i] = generateRoundData();
         }
-        Engine.printCongratulations();
+
+        Engine.run(description, roundsData);
     }
 
     private static String[] generateRoundData() {
-        final var amountOfNumbers = 10;
         final var minStartNumber = 1;
         final var maxStartNumber = 100;
         final var minStepNumber = 2;
         final var maxStepNumber = 5;
         final var minMissingPosition = 1;
-        final var maxMissingPosition = amountOfNumbers;
+        final var maxMissingPosition = 10;
 
-        final var startNumber = Utils.generateNumber(minStartNumber, maxStartNumber);
-        final var stepNumber = Utils.generateNumber(minStepNumber, maxStepNumber);
+        final var first = Utils.generateNumber(minStartNumber, maxStartNumber);
+        final var step = Utils.generateNumber(minStepNumber, maxStepNumber);
+        final var length = 10;
         final var missingPosition = Utils.generateNumber(minMissingPosition, maxMissingPosition);
 
-        var questionAndAnswer = calculate(amountOfNumbers, startNumber, stepNumber, missingPosition);
+        var progression = makeProgression(first, step, length);
+        String answer = progression[missingPosition];
+        progression[missingPosition] = "..";
+        String question = String.join(" ", progression);
 
-        return questionAndAnswer;
+        return new String[] {question, answer};
     }
 
-    private static String[] calculate(int amountOfNumbers, int startNumber, int stepNumber, int missingPosition) {
-        var numberSeries = new int[amountOfNumbers];
-        var question = new StringBuilder();
-        var answer = 0;
+    private static String[] makeProgression(int first, int step, int length) {
+        String[] progression = new String[length];
 
-        for (int j = 0; j < numberSeries.length; j++) {
-            numberSeries[j] = startNumber;
-            startNumber = startNumber + stepNumber;
+        for (int i = 0; i < length; i++) {
+            progression[i] = Integer.toString(first + i * step);
         }
 
-        for (int k = 0; k < numberSeries.length; k++) {
-            if (numberSeries[k] == numberSeries[missingPosition - 1]) {
-                answer = numberSeries[k];
-                question.append(".. ");
-                continue;
-            }
-            question.append(numberSeries[k]);
-            if (k < numberSeries.length - 1) {
-                question.append(" ");
-            }
-        }
-        return new String[] {question.toString(), Integer.toString(answer)};
+        return progression;
     }
 
 }

@@ -3,13 +3,9 @@ package hexlet.code;
 import java.util.Scanner;
 
 public class Engine {
-    private static final int ROUNDS = 3;
+    public static final int ROUNDS = 3;
     private static String userName;
     private static final Scanner SCANNER = new Scanner(System.in);
-
-    public static int getRounds() {
-        return ROUNDS;
-    }
 
     public static void greet(String gameCondition) {
         System.out.println("Welcome to the Brain Games!");
@@ -51,5 +47,34 @@ public class Engine {
             printMessageIfUserAnswerWrong(userAnswer, answer);
             return false;
         }
+    }
+
+    public static void run(String description, String[][] generatedRoundData) {
+        System.out.println("Welcome to the Brain Games!");
+        System.out.print("May I have your name? ");
+        userName = SCANNER.next();
+        System.out.println("Hello, " + userName + "!");
+        System.out.println(description);
+
+        for (int i = 0; i < ROUNDS; i++) {
+            System.out.println("Question: " + generatedRoundData[i][0]);
+            var userAnswer = SCANNER.next();
+            System.out.println("Your answer: " + userAnswer);
+            var answer = generatedRoundData[i][1];
+
+            if (answer.equals(userAnswer)) {
+                System.out.println("Correct!");
+            } else {
+                System.out.println(userAnswer
+                        + " is wrong answer ;(. Correct answer was '"
+                        + answer
+                        + "'.\nLet's try again, "
+                        + userName
+                        + "!");
+                return;
+            }
+        }
+
+        System.out.println("Congratulations, " + userName + "!");
     }
 }
