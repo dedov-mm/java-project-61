@@ -20,8 +20,8 @@ public class Progression {
         final var maxStartNumber = 100;
         final var minStepNumber = 2;
         final var maxStepNumber = 5;
-        final var minMissingPosition = 1;
-        final var maxMissingPosition = 10;
+        final var minMissingPosition = 0;
+        final var maxMissingPosition = 9;
 
         final var first = Utils.generateNumber(minStartNumber, maxStartNumber);
         final var step = Utils.generateNumber(minStepNumber, maxStepNumber);
