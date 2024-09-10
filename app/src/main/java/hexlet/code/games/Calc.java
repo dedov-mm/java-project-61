@@ -44,7 +44,7 @@ public class Calc {
                 return number1 * number2;
             }
             default -> {
-                return 0;
+                throw new IllegalArgumentException("Wrong operator " + "\"" + operator + "\"");
             }
         }
     }

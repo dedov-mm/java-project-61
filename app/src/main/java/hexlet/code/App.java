@@ -42,9 +42,7 @@ public class App {
             case "0" -> {
                 return;
             }
-            default -> {
-                return;
-            }
+            default -> System.out.println("Unknown user choice: " + userChoice);
         }
         scanner.close();
     }
